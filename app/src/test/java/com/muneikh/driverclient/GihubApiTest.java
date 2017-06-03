@@ -29,7 +29,7 @@ public class GihubApiTest {
     public void setUp() throws Exception {
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl("https://triebwerk.herokuapp.com").build();
+                .baseUrl("Your base url here").build();
 
         MockRetrofit mockRetrofit = new MockRetrofit.Builder(retrofit)
                 .networkBehavior(behavior).build();
@@ -66,20 +66,20 @@ public class GihubApiTest {
                 });
     }
 
-//    @Test
-//    public void testFailureResponse() throws Exception {
-//        givenNetworkFailurePercentIs(100);
-//        githubApi.getRepositoryList("google", 1, 10).subscribe(testObserver);
-//        testObserver.assertNoValues();
-//        testObserver.assertError(IOException.class);
-//    }
-//
-//    @Test
-//    public void testMaxRepoCount() throws Exception {
-//        givenNetworkFailurePercentIs(0);
-//        githubApi.getRepositoryList("google", 1, 10).subscribe(response ->
-//                assertEquals(10, response.body().size()));
-//    }
+    @Test
+    public void testFailureResponse() throws Exception {
+        givenNetworkFailurePercentIs(100);
+        githubApi.getRepositoryList("google", 1, 10).subscribe(testObserver);
+        testObserver.assertNoValues();
+        testObserver.assertError(IOException.class);
+    }
+
+    @Test
+    public void testMaxRepoCount() throws Exception {
+        givenNetworkFailurePercentIs(0);
+        githubApi.getRepositoryList("google", 1, 10).subscribe(response ->
+                assertEquals(10, response.body().size()));
+    }
 
     private void givenNetworkFailurePercentIs(int failurePercent) {
         behavior.setDelay(0, TimeUnit.MILLISECONDS);

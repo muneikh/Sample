@@ -23,7 +23,6 @@ public class DriverActivity extends AppCompatActivity implements Observer {
     EditText phoneEditBox;
 
     private DriverViewModel viewModel;
-    //49160299039
 
     private boolean isPinCodeVerificationState = false;
 
@@ -35,8 +34,6 @@ public class DriverActivity extends AppCompatActivity implements Observer {
 
         viewModel = new DriverViewModel(getApplication());
         setupObserver(viewModel);
-
-//        viewModel.executeApi();
     }
 
     public void submitRequest(View view) {
@@ -73,9 +70,6 @@ public class DriverActivity extends AppCompatActivity implements Observer {
                 phoneEditBox.setHint(R.string.enter_pin_code);
                 phoneEditBox.setText("");
                 isPinCodeVerificationState = true;
-
-
-
             } else {
                 // request auth token
             }

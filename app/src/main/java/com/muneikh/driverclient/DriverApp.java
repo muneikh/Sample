@@ -19,7 +19,7 @@ public class DriverApp extends Application {
 
         netComponent = DaggerNetComponent.builder()
                 .appModule(new AppModule(this))
-                .netModule(new NetModule("https://triebwerk.herokuapp.com"))
+                .netModule(new NetModule("Your base url here"))
                 .build();
 
         if (BuildConfig.DEBUG) {
